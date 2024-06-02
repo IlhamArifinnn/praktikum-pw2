@@ -117,19 +117,25 @@
                                 <textarea class="form-control" id="alamat" required name="alamat">{{ old('alamat') }}</textarea>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <div class="col-2">
-                                <label for="alamat">Kelurahan ID</label>
-                            </div>
+                            <label for="kelurahan_id" class="col-2 col-form-label">Pilih Kelurahan</label>
                             <div class="col-9">
-                                <input type="number" class="form-control" id="kelurahan_id" name="kelurahan_id"
-                                    required value="{{ old('kelurahan_id') }}">
+                                <select id="kelurahan_id" name="kelurahan_id" class="custom-select" required>
+                                    <option selected disabled>pilih kelurahan</option>
+                                    @forelse ($list_kelurahan as $kelurahan)
+                                        <option value="{{ $kelurahan->id }}">{{ $kelurahan->nama }}</option>
+                                    @empty
+                                        <option selected disabled>no data!</option>
+                                    @endforelse
+                                </select>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <div class="offset-2 col-8">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <button type="reset" class="btn btn-danger">Reset</button>
+                                <a href="{{ route('pasien.index') }}" class="btn btn-secondary">Kembali</a>
                             </div>
                         </div>
                     </form>

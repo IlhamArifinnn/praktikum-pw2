@@ -60,7 +60,8 @@
                                         <a href="{{ route('kelurahan.edit', $kelurahan->id) }}"
                                             class="btn btn-success mr-2"><i class="bi bi-pencil-square"></i></a>
 
-                                        <form action="{{ route('kelurahan.destroy', $kelurahan->id) }}" method="POST">
+                                        <form action="{{ route('kelurahan.destroy', $kelurahan->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" name="submit" class="btn btn-danger"><i

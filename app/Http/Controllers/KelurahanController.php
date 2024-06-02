@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Kelurahan;
 use Illuminate\Http\Request;
 
+use function Pest\Laravel\delete;
+
 class KelurahanController extends Controller
 {
     /**
@@ -12,8 +14,11 @@ class KelurahanController extends Controller
      */
     public function index()
     {
-        $list_kelurahan = Kelurahan::all();
-        return view('kelurahan.index', ['list_kelurahan' => $list_kelurahan]);
+        $list_kelurahan = Kelurahan::with('kelurahan')->get();
+
+        return view('kelurahan.index', [
+            'list_kelurahan' => $list_kelurahan
+        ]);
     }
 
     /**
@@ -21,7 +26,11 @@ class KelurahanController extends Controller
      */
     public function create()
     {
-        //
+        $list_kelurahan = Kelurahan::get();
+
+        return view('kelurahan.create', [
+            'list_kelurahan' => $list_kelurahan
+        ]);
     }
 
     /**
@@ -29,7 +38,13 @@ class KelurahanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nama' => ['required'],
+        ]);
+
+        Kelurahan::create($data);
+
+        return redirect()->route('kelurahan.index')->with('success', 'data berhasil ditambahkan');
     }
 
     /**
@@ -37,8 +52,9 @@ class KelurahanController extends Controller
      */
     public function show(Kelurahan $kelurahan)
     {
-        $list_kelurahan = Kelurahan::all();
-        return view('kelurahan.index', ['list_kelurahan' => $list_kelurahan]);
+        return view('kelurahan.show', [
+            'kelurahan' => $kelurahan
+        ]);
     }
 
     /**
@@ -46,7 +62,12 @@ class KelurahanController extends Controller
      */
     public function edit(Kelurahan $kelurahan)
     {
-        //
+        $list_kelurahan = Kelurahan::get();
+
+        return view('kelurahan.edit', [
+            'kelurahan' => $kelurahan,
+            'list_kelurahan' => $list_kelurahan
+        ]);
     }
 
     /**
@@ -54,7 +75,13 @@ class KelurahanController extends Controller
      */
     public function update(Request $request, Kelurahan $kelurahan)
     {
-        //
+        $data = $request->validate([
+            'nama' => ['required'],
+        ]);
+
+        $kelurahan->update($data);
+
+        return redirect()->route('kelurahan.index')->with('success', 'data berhasil ditambahkan');
     }
 
     /**
@@ -62,6 +89,8 @@ class KelurahanController extends Controller
      */
     public function destroy(Kelurahan $kelurahan)
     {
-        //
+        $kelurahan->delete();
+
+        return redirect()->route('kelurahan.index')->with('success', 'data berhasil dihapus');
     }
 }

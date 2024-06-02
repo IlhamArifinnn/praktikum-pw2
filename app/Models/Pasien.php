@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pasien extends Model
 {
     use HasFactory;
+
     protected $table = 'pasien';
     protected $fillable = [
         'id',
@@ -21,13 +22,14 @@ class Pasien extends Model
         'kelurahan_id'
     ];
 
-    public $timestamp = false;
+    public $timestamps = false;
+
     public function kelurahan()
     {
         return $this->belongsTo(Kelurahan::class);
     }
 
-    public function periksan()
+    public function periksa()
     {
         return $this->belongsTo(Periksa::class);
     }

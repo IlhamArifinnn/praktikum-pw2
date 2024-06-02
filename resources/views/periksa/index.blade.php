@@ -49,8 +49,8 @@
                                 <th>Tinggi</th>
                                 <th>Tensi</th>
                                 <th>Keterangan</th>
-                                <th>Pasien ID</th>
-                                <th>Dokter ID</th>
+                                <th>Pasien</th>
+                                <th>Dokter</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -63,15 +63,16 @@
                                     <td>{{ $periksa->tinggi }}</td>
                                     <td>{{ $periksa->tensi }}</td>
                                     <td>{{ $periksa->keterangan }}</td>
-                                    <td>{{ $periksa->pasien_id }}</td>
-                                    <td>{{ $periksa->dokter_id }}</td>
+                                    <td>{{ $periksa->pasien->nama }}</td>
+                                    <td>{{ $periksa->dokter->nama }}</td>
                                     <td class="d-flex">
                                         <a href="{{ route('periksa.show', $periksa->id) }}" class="btn btn-info mr-2"><i
                                                 class="bi bi-eye"></i></a>
                                         <a href="{{ route('periksa.edit', $periksa->id) }}"
                                             class="btn btn-success mr-2"><i class="bi bi-pencil-square"></i></a>
 
-                                        <form action="{{ route('periksa.destroy', $periksa->id) }}" method="POST">
+                                        <form action="{{ route('periksa.destroy', $periksa->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" name="submit" class="btn btn-danger"><i

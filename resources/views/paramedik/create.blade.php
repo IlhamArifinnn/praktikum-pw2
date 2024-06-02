@@ -1,4 +1,3 @@
-<!-- resources/views/paramedik/create.blade.php -->
 @include('admin.header')
 @include('admin.sidebar')
 
@@ -44,7 +43,7 @@
                                 <label for="nama">Nama</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="nama" name="nama"
+                                <input type="text" class="form-control" id="nama" name="nama" required
                                     value="{{ old('nama') }}">
                             </div>
                         </div>
@@ -94,46 +93,59 @@
                                 <label for="kategori">Kategori</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="kategori" name="kategori"
-                                    value="{{ old('kategori') }}">
+                                <select id="kategori" name="kategori" class="custom-select">
+                                    <option selected disabled>pilih unit kerja</option>
+                                    <option value="Dokter">Dokter</option>
+                                    <option value="Perawat">Perawat</option>
+                                    <option value="Bidan">Bidan</option>
+                                    <option value="Apoteker">Apoteker</option>
+                                    <option value="Ahli Gizi">Ahli Gizi</option>
+                                    <option value="Teknisi Laboratorium">Teknisi Laboratorium</option>
+                                    <option value="Radiografer">Radiografer</option>
+                                    <option value="Farmasis">Farmasis</option>
+                                    <option value="Fisioterapis">Fisioterapis</option>
+                                </select>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-2">
-                                <label for="telpon">Telpon</label>
+                            <div class="form-group row mt-3">
+                                <div class="col-2">
+                                    <label for="telpon">Telpon</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" id="telpon" name="telpon"
+                                        value="{{ old('telpon') }}">
+                                </div>
                             </div>
-                            <div class="col-9">
-                                <input type="text" class="form-control" id="telpon" name="telpon"
-                                    value="{{ old('telpon') }}">
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-2">
-                                <label for="alamat">Alamat</label>
+                            <div class="form-group row">
+                                <div class="col-2">
+                                    <label for="alamat">Alamat</label>
+                                </div>
+                                <div class="col-9">
+                                    <textarea class="form-control" id="alamat" name="alamat">{{ old('alamat') }}</textarea>
+                                </div>
                             </div>
-                            <div class="col-9">
-                                <textarea class="form-control" id="alamat" name="alamat">{{ old('alamat') }}</textarea>
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-2">
-                                <label for="unit_kerja_id">Unit Kerja ID</label>
+                            <div class="form-group row">
+                                <label for="unit_kerja_id" class="col-2 col-form-label">Pilih unit kerja</label>
+                                <div class="col-9">
+                                    <select id="unit_kerja_id" name="unit_kerja_id" class="custom-select">
+                                        <option selected disabled>pilih unit kerja</option>
+                                        @forelse ($list_unit_kerja as $unit_kerja)
+                                            <option value="{{ $unit_kerja->id }}">{{ $unit_kerja->nama }}</option>
+                                        @empty
+                                            <option selected disabled>no data!</option>
+                                        @endforelse
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-9">
-                                <input type="number" class="form-control" id="unit_kerja_id" name="unit_kerja_id"
-                                    value="{{ old('unit_kerja_id') }}">
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="offset-2 col-8">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <button type="reset" class="btn btn-danger">Reset</button>
+                            <div class="form-group row">
+                                <div class="offset-2 col-8">
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <a href="{{ route('paramedik.index') }}" class="btn btn-secondary">Kembali</a>
+                                </div>
                             </div>
-                        </div>
                     </form>
                 </div>
                 <div class="card-footer">

@@ -4,6 +4,11 @@
 <div class="container-fluid px-4">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -72,7 +77,8 @@
                                         <a href="{{ route('pasien.edit', $pasien->id) }}"
                                             class="btn btn-success mr-2"><i class="bi bi-pencil-square"></i></a>
 
-                                        <form action="{{ route('pasien.destroy', $pasien->id) }}" method="POST">
+                                        <form action="{{ route('pasien.destroy', $pasien->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" name="submit" class="btn btn-danger"><i

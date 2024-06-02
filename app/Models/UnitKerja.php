@@ -10,4 +10,11 @@ class UnitKerja extends Model
     use HasFactory;
     protected $table = 'unit_kerja';
     protected $fillable = ['id', 'nama'];
+
+    public $timestamps = false;
+
+    public function unit_kerja()
+    {
+        return $this->belongsTo(UnitKerja::class);
+    }
 }

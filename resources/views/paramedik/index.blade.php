@@ -51,7 +51,7 @@
                                 <th>Kategori</th>
                                 <th>Telpon</th>
                                 <th>Alamat</th>
-                                <th>Unit Kerja ID</th>
+                                <th>Unit Kerja</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -66,14 +66,15 @@
                                     <td>{{ $paramedik->kategori }}</td>
                                     <td>{{ $paramedik->telpon }}</td>
                                     <td>{{ $paramedik->alamat }}</td>
-                                    <td>{{ $paramedik->unit_kerja_id }}</td>
+                                    <td>{{ $paramedik->unit_kerja->nama }}</td>
                                     <td class="d-flex">
                                         <a href="{{ route('paramedik.show', $paramedik->id) }}"
                                             class="btn btn-info mr-2"><i class="bi bi-eye"></i></a>
                                         <a href="{{ route('paramedik.edit', $paramedik->id) }}"
                                             class="btn btn-success mr-2"><i class="bi bi-pencil-square"></i></a>
 
-                                        <form action="{{ route('paramedik.destroy', $paramedik->id) }}" method="POST">
+                                        <form action="{{ route('paramedik.destroy', $paramedik->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" name="submit" class="btn btn-danger"><i

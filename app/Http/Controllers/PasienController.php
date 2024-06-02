@@ -12,7 +12,7 @@ class PasienController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
         $list_pasien = Pasien::with('kelurahan')->get();
 
         return view('pasien.index', [
