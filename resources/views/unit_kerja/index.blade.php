@@ -4,6 +4,13 @@
 <div class="container-fluid px-4">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">

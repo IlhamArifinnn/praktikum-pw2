@@ -30,52 +30,105 @@
                         @method('patch')
 
                         <div class="form-group">
-                            <label for="tanggal">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal"
-                                value="{{ $periksa->tanggal }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="berat">Berat</label>
-                            <input type="number" class="form-control" id="berat" name="berat"
-                                value="{{ $periksa->berat }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tinggi">Tinggi</label>
-                            <input type="number" class="form-control" id="tinggi" name="tinggi"
-                                value="{{ $periksa->tinggi }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tensi">Tensi</label>
-                            <input type="text" class="form-control" id="tensi" name="tensi"
-                                value="{{ $periksa->tensi }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="keterangan">Keterangan</label>
-                            <textarea class="form-control" id="keterangan" name="keterangan" required>{{ $periksa->keterangan }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="pasien_id">Pasien</label>
-                            <select class="form-control" id="pasien_id" name="pasien_id" required>
-                                @foreach ($list_pasien as $pasien)
-                                    <option value="{{ $pasien->id }}"
-                                        {{ $periksa->pasien_id == $pasien->id ? 'selected' : '' }}>{{ $pasien->nama }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="paramedik_id">Paramedik</label>
-                            <select class="form-control" id="paramedik_id" name="paramedik_id" required>
-                                @foreach ($list_paramedik as $paramedik)
-                                    <option value="{{ $paramedik->id }}"
-                                        {{ $periksa->paramedik_id == $paramedik->id ? 'selected' : '' }}>
-                                        {{ $paramedik->nama }}</option>
-                                @endforeach
-                            </select>
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="tanggal">Tanggal</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal"
+                                        value="{{ $periksa->tanggal }}" required>
+                                </div>
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn-success">Update</button>
-                        <a class="btn btn-primary" href="{{ route('periksa.index') }}">Kembali</a>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="berat">Berat</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="number" class="form-control" id="berat" name="berat"
+                                        value="{{ $periksa->berat }}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="tinggi">Tinggi</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="number" class="form-control" id="tinggi" name="tinggi"
+                                        value="{{ $periksa->tinggi }}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="tensi">Tensi</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" id="tensi" name="tensi"
+                                        value="{{ $periksa->tensi }}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="keterangan">Keterangan</label>
+                                </div>
+                                <div class="col-9">
+                                    <textarea class="form-control" id="keterangan" name="keterangan" required>{{ $periksa->keterangan }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="pasien_id">Pasien</label>
+                                </div>
+                                <div class="col-9">
+                                    <select class="form-control" id="pasien_id" name="pasien_id" required>
+                                        @foreach ($list_pasien as $pasien)
+                                            <option value="{{ $pasien->id }}"
+                                                {{ $periksa->pasien_id == $pasien->id ? 'selected' : '' }}>
+                                                {{ $pasien->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="paramedik_id">Paramedik</label>
+                                </div>
+                                <div class="col-9">
+                                    <select class="form-control" id="paramedik_id" name="paramedik_id" required>
+                                        @foreach ($list_paramedik as $paramedik)
+                                            <option value="{{ $paramedik->id }}"
+                                                {{ $periksa->paramedik_id == $paramedik->id ? 'selected' : '' }}>
+                                                {{ $paramedik->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="offset-2 col-8">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <a class="btn btn-secondary" href="{{ route('periksa.index') }}">Batal</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

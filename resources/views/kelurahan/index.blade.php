@@ -4,7 +4,13 @@
 <div class="container-fluid px-4">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -44,7 +50,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Kecamatan ID</th>
+                                <th>Kecamatan</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

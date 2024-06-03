@@ -143,7 +143,7 @@
                         <div class="form-group row">
                             <div class="offset-2 col-8">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="{{ route('paramedik.index') }}" class="btn btn-secondary">Kembali</a>
+                                <a href="{{ route('paramedik.index') }}" class="btn btn-secondary">Batal</a>
                             </div>
                         </div>
                     </form>

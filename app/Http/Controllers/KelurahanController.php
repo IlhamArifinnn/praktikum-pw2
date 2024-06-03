@@ -17,7 +17,7 @@ class KelurahanController extends Controller
         $list_kelurahan = Kelurahan::with('kelurahan')->get();
 
         return view('kelurahan.index', [
-            'list_kelurahan' => $list_kelurahan
+            'list_kelurahan'     => $list_kelurahan
         ]);
     }
 
@@ -81,7 +81,7 @@ class KelurahanController extends Controller
 
         $kelurahan->update($data);
 
-        return redirect()->route('kelurahan.index')->with('success', 'data berhasil ditambahkan');
+        return redirect()->route('kelurahan.index')->with('success', 'data berhasil diupdate');
     }
 
     /**
