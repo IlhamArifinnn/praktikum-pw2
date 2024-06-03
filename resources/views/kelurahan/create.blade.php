@@ -39,22 +39,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="kec_id">Kecamatan</label>
-                                </div>
-                                <div class="col-9">
-                                    <select class="form-control" id="kec_id" name="kec_id" required>
-                                        <option selected disabled>Pilih Kecamatan</option>
-                                        @foreach ($list_kelurahan as $kelurahan)
-                                            <option value="{{ $kelurahan->id }}">{{ $kelurahan->nama }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group row">
                             <div class="offset-2 col-8">
                                 <button type="submit" class="btn btn-primary">Simpan</button>

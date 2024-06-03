@@ -29,13 +29,9 @@
                     <h3 class="card-title">Detail Kelurahan</h3>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered w-50">
+                    <table class="table table-bordered w-50 rounded">
                         <tr>
                             <th>Nama Kelurahan</th>
-                            <td>{{ $kelurahan->nama }}</td>
-                        </tr>
-                        <tr>
-                            <th>Kecamatan</th>
                             <td>{{ $kelurahan->nama }}</td>
                         </tr>
                     </table>

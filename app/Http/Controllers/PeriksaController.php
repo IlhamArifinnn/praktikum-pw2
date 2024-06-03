@@ -15,13 +15,7 @@ class PeriksaController extends Controller
      */
     public function index()
     {
-        $list_periksa = Periksa::with('pasien')->get();
-
-        return view('periksa.index', [
-            'list_periksa' => $list_periksa
-        ]);
-
-        $list_periksa = Periksa::with('paramedik')->get();
+        $list_periksa = Periksa::with(['pasien', 'dokter'])->get();
 
         return view('periksa.index', [
             'list_periksa' => $list_periksa
@@ -33,12 +27,12 @@ class PeriksaController extends Controller
      */
     public function create()
     {
-        $list_pasien = Pasien::get();
-        $list_paramedik = Paramedik::get();
+        $list_pasien = Pasien::all();
+        $list_dokter = Paramedik::all();
 
         return view('periksa.create', [
             'list_pasien' => $list_pasien,
-            'list_paramedik' => $list_paramedik,
+            'list_dokter' => $list_dokter,
         ]);
     }
 

@@ -5,6 +5,12 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -66,8 +72,8 @@
                                     <td>{{ $periksa->pasien->nama }}</td>
                                     <td>{{ $periksa->dokter->nama }}</td>
                                     <td class="d-flex">
-                                        <a href="{{ route('periksa.show', $periksa->id) }}" class="btn btn-info mr-2"><i
-                                                class="bi bi-eye"></i></a>
+                                        <a href="{{ route('periksa.show', $periksa->id) }}"
+                                            class="btn btn-info mr-2"><i class="bi bi-eye"></i></a>
                                         <a href="{{ route('periksa.edit', $periksa->id) }}"
                                             class="btn btn-success mr-2"><i class="bi bi-pencil-square"></i></a>
 

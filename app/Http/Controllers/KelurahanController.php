@@ -40,6 +40,7 @@ class KelurahanController extends Controller
     {
         $data = $request->validate([
             'nama' => ['required'],
+            'kec_id' => ['required'],
         ]);
 
         Kelurahan::create($data);

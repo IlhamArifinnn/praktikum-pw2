@@ -45,12 +45,11 @@
                 </div>
                 <div class="card-body">
                     <a class="btn btn-primary mb-3" href="{{ route('kelurahan.create') }}">Tambah Data</a>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-hover w-75">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Kecamatan</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -59,7 +58,6 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $kelurahan->nama }}</td>
-                                    <td>{{ $kelurahan->kec_id }}</td>
                                     <td class="d-flex">
                                         <a href="{{ route('kelurahan.show', $kelurahan->id) }}"
                                             class="btn btn-info mr-2"><i class="bi bi-eye"></i></a>

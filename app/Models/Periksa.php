@@ -28,7 +28,7 @@ class Periksa extends Model
         return $this->belongsTo(Pasien::class);
     }
 
-    public function paramedik()
+    public function dokter()
     {
         return $this->belongsTo(Paramedik::class);
     }
